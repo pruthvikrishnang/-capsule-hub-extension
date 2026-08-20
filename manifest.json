@@ -4,9 +4,9 @@
   "version": "1.2.0",
   "description": "Capture conversation context from one AI and continue in another instantly. 100% local, privacy-first, open-source.",
   "icons": {
-    "16": "icon16.png",
-    "48": "icon48.png",
-    "128": "icon128.png"
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
   },
   "permissions": [
     "activeTab",
@@ -24,12 +24,12 @@
     "https://*.deepseek.com/*"
   ],
   "action": {
-    "default_popup": "popup.html",
+    "default_popup": "src/popup/popup.html",
     "default_title": "Capsule Hub - AI Context Bridge",
     "default_icon": {
-      "16": "icon16.png",
-      "48": "icon48.png",
-      "128": "icon128.png"
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
     }
   },
   "content_scripts": [
@@ -42,12 +42,12 @@
         "https://chat.deepseek.com/*",
         "https://*.deepseek.com/*"
       ],
-      "js": ["content.js"],
-      "css": ["content.css"],
+      "js": ["src/content/content.js"],
+      "css": ["src/content/content.css"],
       "run_at": "document_idle"
     }
   ],
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "src/background/background.js"
   }
 }

@@ -225,7 +225,7 @@ function trackProgress(assistantMessages) {
   ];
 
   assistantMessages.forEach(msg => {
-    const sentences = msg.text.split(/[.!?]+/).filter(s => s.trim().length > 15);
+    const sentences = msg.split(/[.!?]+/).filter(s => s.trim().length > 15);
     sentences.forEach(sentence => {
       completedPatterns.forEach(pattern => {
         const match = sentence.match(pattern);
@@ -334,14 +334,14 @@ function determineCurrentState(messages) {
 }
 
 // Create intelligent capsule - ALL LOCAL, NO API CALLS!
-function createIntelligentCapsule() {
+function createIntelligentCapsule(messages = extractMessages()) {
   const providerKey = detectProvider();
   if (!providerKey) {
     throw new Error("Not on a supported AI platform");
   }
 
   const provider = PROVIDERS[providerKey];
-  const messages = extractMessages();
+  // const messages = extractMessages();
   
   if (messages.length === 0) {
     throw new Error("No conversation found. Start chatting first!");
